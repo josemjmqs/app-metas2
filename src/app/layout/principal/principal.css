@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+@reference "../../../styles.css";
+
+:host {
+  @apply flex flex-1 min-h-0;
+}
+
+.contenedor {
+  @apply flex flex-1 overflow-hidden;
+}
+
+.aside {
+  @apply w-60 bg-gray-100 shadow flex flex-col;
+}
+
+.main {
+  @apply flex-1 overflow-auto;
+}

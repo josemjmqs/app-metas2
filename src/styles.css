@@ -1,3 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@theme {
+  --height-sm: 8px;
+  --height-md: 16px;
+  --height-lg: 24px;
+  --height-xl: 48px;
+  --height-principal: 64px;
+}

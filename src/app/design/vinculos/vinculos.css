@@ -1,0 +1,14 @@
+@reference "tailwindcss";
+@reference "../../../styles.css";
+
+.vinculo {
+  @apply flex p-4 items-center gap-2;
+}
+
+.icono {
+  @apply h-xl ;
+}
+
+.texto {
+  @apply text-lg;
+}

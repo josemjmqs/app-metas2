@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+@reference "../../../styles.css";
+
+.layout {
+  @apply flex flex-col h-screen;
+}
+
+.principal {
+  @apply flex-1 min-h-0;
+}
