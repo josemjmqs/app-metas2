@@ -1,9 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Metas } from '../../design/metas/metas';
+import { metasService } from '../../services/metas';
+import { MetasInterfaz } from '../../core/models/metas';
 
 @Component({
   selector: 'app-listar-metas',
-  imports: [],
+  imports: [Metas],
   templateUrl: './listar-metas.html',
   styleUrl: './listar-metas.css',
 })
-export class ListarMetas {}
+export class ListarMetas {
+  metasService = inject(metasService);
+  listaDeMetas!: MetasInterfaz[];
+
+  constructor() {
+    this.listaDeMetas = this.metasService.obtenerMetas();
+  }
+}

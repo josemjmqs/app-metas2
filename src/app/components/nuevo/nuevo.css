@@ -1,0 +1,20 @@
+@reference "tailwindcss";
+@reference "../../../styles.css";
+
+.tarjeta {
+  @apply bg-white m-4 rounded-2xl shadow-md overflow-hidden;
+}
+
+.botones {
+  @apply bg-gradient-to-r from-gray-700 via-gray-200 to-gray-200 px-4 py-3 flex justify-between;
+}
+
+.boton {
+  @apply text-sm font-bold py-2 px-5 rounded-full bg-gray-200 border-0;
+  box-shadow: 4px 4px 8px rgba(9, 9, 9, 0.25);
+}
+
+.boton-negro{
+  @apply text-sm font-bold py-2 px-5 rounded-full bg-gray-800 border-0 text-white;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+}

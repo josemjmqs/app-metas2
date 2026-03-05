@@ -1,0 +1,33 @@
+@reference "tailwindcss";
+@reference "../../../styles.css";
+
+.tarjeta {
+  @apply flex border border-gray-200 rounded-2xl m-4 p-4 justify-between;
+}
+
+.izquierda {
+  @apply flex gap-8;
+}
+
+.derecha {
+  @apply flex gap-8;
+}
+
+.icono {
+  @apply w-7 h-7 flex items-center justify-center
+         border border-gray-300 rounded-full bg-white;
+
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.completadoBarras {
+  @apply flex flex-col items-center;
+}
+
+.barra1 {
+  @apply h-1 w-28 bg-blue-200 relative;
+}
+
+.barra2 {
+  @apply absolute top-0 left-0 h-1 bg-blue-500 rounded-full;
+}

@@ -1,0 +1,36 @@
+<section>
+  <div class="tarjeta">
+    <form [formGroup]="formularioDeMetas" class="p-6" (ngSubmit)="subirFormulario">
+      <label for="describe" class="label">
+        Describe tu meta
+      </label>
+      <input id="describe" type="text" class="input" placeholder="ej. 52 caminatas." formControlName="detalles">
+      <label for="frecuencia" class="label">¿Con que frecuencia deseas cumplir tu meta?<span>(ej. 1 vez a la
+          semana)</span></label>
+      <div class="flex gap-4">
+        <input type="text" id="frecuencia" class="input" formControlName="eventos">
+        <select id="frecuencia" class="input" formControlName="periodo">
+          @for (frecuencia of frecuencias; track frecuencia) {
+          <option [value]="frecuencia">{{frecuencia}}</option>
+          }
+        </select>
+      </div>
+      <label for="meta" class="label">¿Cuantas veces deseas completar esta meta?</label>
+      <input type="number" id="meta" class="input" formControlName="meta">
+      <label for="plazo" class="label">¿Tienes una fecha limite?</label>
+      <input type="date" class="input" id="plazo" formControlName="plazo">
+      <label for="completado" class="label">¿Cuantas veces haz completado esta meta?</label>
+      <input type="number" class="input" id="completado" formControlName="completado">
+      <label for="icono" class="label">Escoge el icono para la meta</label>
+      <select id="icono" class="input" formControlName="icono">
+        @for (icono of iconos; track iconos) {
+        <option [value]="icono">{{icono}}</option>
+        }
+      </select>
+    </form>
+    <div class="botones">
+      <button class="boton-negro" (click)="subirFormulario()">Crear</button>
+      <button class="boton">Cancelar</button>
+    </div>
+  </div>
+</section>

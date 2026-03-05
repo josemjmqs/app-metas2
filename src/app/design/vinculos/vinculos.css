@@ -6,7 +6,7 @@
 }
 
 .icono {
-  @apply h-xl ;
+  @apply h-lg ;
 }
 
 .texto {

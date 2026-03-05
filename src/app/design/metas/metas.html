@@ -1,0 +1,18 @@
+<div class="tarjeta">
+  <div class="izquierda">
+    <div class="icono">
+      {{meta.icono}}
+    </div>
+    <p>{{meta.eventos}} / <sub>{{meta.periodo}}</sub></p>
+    <p>{{meta.detalles}}</p>
+  </div>
+  <div class="derecha">
+    <div class="completadoBarras">
+      <p>{{meta.completado}} de {{meta.meta}}</p>
+      <div class="barra1">
+        <div class="barra2" [style.width.%]="alcanzado"></div>
+      </div>
+    </div>
+    <button class="boton">Completado</button>
+  </div>
+</div>
