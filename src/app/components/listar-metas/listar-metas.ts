@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Metas } from '../../design/metas/metas';
 import { MetasService } from '../../services/metas';
 import { MetasInterfaz } from '../../core/models/metas';
@@ -9,11 +9,17 @@ import { MetasInterfaz } from '../../core/models/metas';
   templateUrl: './listar-metas.html',
   styleUrl: './listar-metas.css',
 })
-export class ListarMetas {
+export class ListarMetas implements OnInit {
   metasService = inject(MetasService);
-  listaDeMetas!: MetasInterfaz[];
+  listaDeMetas: MetasInterfaz[];
+  listaDeMetasback!: MetasInterfaz[];
 
   constructor() {
     this.listaDeMetas = this.metasService.obtenerMetas();
+  }
+  ngOnInit(): void {
+    this.metasService.obtenerMetasBack().then((valorObtenido: MetasInterfaz[]) => {
+      this.listaDeMetasback = valorObtenido;
+    });
   }
 }

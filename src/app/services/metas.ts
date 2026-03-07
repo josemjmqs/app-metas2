@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MetasInterfaz } from '../core/models/metas';
+import { Backend } from './backend'
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,7 @@ export class MetasService {
   ];
 
   valoresLocalStorage: any;
-  constructor() {
+  constructor(private backendService: Backend) {
     this.valoresLocalStorage = localStorage.getItem('metas');
     if (this.valoresLocalStorage === null) {
       this.actualizarLocalStorage();
@@ -80,5 +81,8 @@ export class MetasService {
       this.metasMock.splice(indice, 1);
       this.actualizarLocalStorage();
     }
+  }
+  async obtenerMetasBack(): Promise<MetasInterfaz[]> {
+    return this.backendService.leerMetas()
   }
 }
