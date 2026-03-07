@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './nuevo.html',
   styleUrl: './nuevo.css',
 })
-export class Nuevo implements OnChanges{
+export class Nuevo implements OnChanges {
   @Input()
-  metasIng?: MetasInterfaz
+  metasIng?: MetasInterfaz;
   metaEnviar!: MetasInterfaz;
   metasService = inject(MetasService);
   formularioDeMetas = new FormGroup({
@@ -30,7 +30,7 @@ export class Nuevo implements OnChanges{
   iconos = ['💻', '🏃‍♂️', '📚', '🛩️', '💵'];
   constructor(private router: Router) {}
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.metasIng) {
+    if (this.metasIng) {
       this.formularioDeMetas.setValue({
         id: this.metasIng.id,
         detalles: this.metasIng.detalles,
@@ -45,7 +45,7 @@ export class Nuevo implements OnChanges{
   }
   llenarMetaAEnviar() {
     this.metaEnviar = {
-      id: Math.random().toString(),
+      id: this.metasIng ? this.metasIng.id : Math.random().toString(),
       detalles: this.formularioDeMetas.value.detalles!,
       periodo: this.formularioDeMetas.value.periodo!,
       eventos: this.formularioDeMetas.value.eventos!,
@@ -53,14 +53,25 @@ export class Nuevo implements OnChanges{
       meta: this.formularioDeMetas.value.meta!,
       plazo: this.formularioDeMetas.value.plazo!,
       completado: this.formularioDeMetas.value.completado!,
-    }
+    };
   }
 
   subirFormulario() {
-    this.llenarMetaAEnviar()
+    this.llenarMetaAEnviar();
+    this.metasService.crearMetas(this.metaEnviar);
+    this.router.navigate(['/']);
+  }
+  actualizarMeta() {
+    this.llenarMetaAEnviar();
     this.metasService.actualizarMetas(this.metaEnviar);
     this.router.navigate(['/']);
   }
-  
-
+  eliminarMeta() {
+    this.llenarMetaAEnviar();
+    this.metasService.eliminarMetas(this.metaEnviar);
+    this.router.navigate(['/']);
+  }
+  cancelar() {
+    this.router.navigate(['/']);
+  }
 }

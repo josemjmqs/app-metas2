@@ -33,12 +33,12 @@
         <button class="boton-negro" (click)="subirFormulario()">Crear</button>
       }
       @if(metasIng) {
-        <button class="boton-negro" (click)="subirFormulario()">Actializar</button>
+        <button class="boton-negro" (click)="actualizarMeta()">Actualizar</button>
       }
       @if(metasIng) {
-        <button class="boton-rojo" (click)="subirFormulario()">Borrar</button>
+        <button class="boton-rojo" (click)="eliminarMeta()">Borrar</button>
       }
-      <button class="boton">Cancelar</button>
+      <button class="boton" (click)="cancelar()">Cancelar</button>
     </div>
   </div>
 </section>

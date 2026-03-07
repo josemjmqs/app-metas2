@@ -38,13 +38,29 @@ export class MetasService {
     },
   ];
 
-  constructor() {}
+  valoresLocalStorage: any;
+  constructor() {
+    this.valoresLocalStorage = localStorage.getItem('metas');
+    if (this.valoresLocalStorage === null) {
+      this.actualizarLocalStorage();
+    } else {
+      const metasCrudas = localStorage.getItem('metas');
+      const metasParseadas = JSON.parse(metasCrudas!);
+      this.metasMock = metasParseadas;
+    }
+  }
+
+  actualizarLocalStorage() {
+    const dataJson = JSON.stringify(this.metasMock);
+    localStorage.setItem('metas', dataJson);
+  }
 
   obtenerMetas(): MetasInterfaz[] {
     return this.metasMock;
   }
   crearMetas(meta: MetasInterfaz) {
     this.metasMock.push(meta);
+    this.actualizarLocalStorage();
   }
 
   actualizarMetas(metaActualizar: MetasInterfaz) {
@@ -53,6 +69,7 @@ export class MetasService {
       console.log('Meta no encontrada');
     } else {
       this.metasMock[indice] = metaActualizar;
+      this.actualizarLocalStorage();
     }
   }
   eliminarMetas(metaActualizar: MetasInterfaz) {
@@ -60,7 +77,8 @@ export class MetasService {
     if (indice === -1) {
       console.log('Meta no encontrada');
     } else {
-      this.metasMock.splice(indice,1)
+      this.metasMock.splice(indice, 1);
+      this.actualizarLocalStorage();
     }
   }
 }
