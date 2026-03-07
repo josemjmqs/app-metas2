@@ -4,7 +4,7 @@ import { MetasInterfaz } from '../core/models/metas';
 @Injectable({
   providedIn: 'root',
 })
-export class metasService {
+export class MetasService {
   metasMock: MetasInterfaz[] = [
     {
       id: '1',
@@ -42,5 +42,25 @@ export class metasService {
 
   obtenerMetas(): MetasInterfaz[] {
     return this.metasMock;
+  }
+  crearMetas(meta: MetasInterfaz) {
+    this.metasMock.push(meta);
+  }
+
+  actualizarMetas(metaActualizar: MetasInterfaz) {
+    const indice = this.metasMock.findIndex((meta) => meta.id === metaActualizar.id);
+    if (indice === -1) {
+      console.log('Meta no encontrada');
+    } else {
+      this.metasMock[indice] = metaActualizar;
+    }
+  }
+  eliminarMetas(metaActualizar: MetasInterfaz) {
+    const indice = this.metasMock.findIndex((meta) => meta.id === metaActualizar.id);
+    if (indice === -1) {
+      console.log('Meta no encontrada');
+    } else {
+      this.metasMock.splice(indice,1)
+    }
   }
 }

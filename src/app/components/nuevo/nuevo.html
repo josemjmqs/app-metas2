@@ -1,6 +1,6 @@
 <section>
   <div class="tarjeta">
-    <form [formGroup]="formularioDeMetas" class="p-6" (ngSubmit)="subirFormulario">
+    <form [formGroup]="formularioDeMetas" class="p-6" (ngSubmit)="subirFormulario()">
       <label for="describe" class="label">
         Describe tu meta
       </label>
@@ -29,7 +29,15 @@
       </select>
     </form>
     <div class="botones">
-      <button class="boton-negro" (click)="subirFormulario()">Crear</button>
+      @if(!metasIng) {
+        <button class="boton-negro" (click)="subirFormulario()">Crear</button>
+      }
+      @if(metasIng) {
+        <button class="boton-negro" (click)="subirFormulario()">Actializar</button>
+      }
+      @if(metasIng) {
+        <button class="boton-rojo" (click)="subirFormulario()">Borrar</button>
+      }
       <button class="boton">Cancelar</button>
     </div>
   </div>

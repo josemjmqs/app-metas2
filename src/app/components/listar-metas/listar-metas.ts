@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Metas } from '../../design/metas/metas';
-import { metasService } from '../../services/metas';
+import { MetasService } from '../../services/metas';
 import { MetasInterfaz } from '../../core/models/metas';
 
 @Component({
@@ -10,7 +10,7 @@ import { MetasInterfaz } from '../../core/models/metas';
   styleUrl: './listar-metas.css',
 })
 export class ListarMetas {
-  metasService = inject(metasService);
+  metasService = inject(MetasService);
   listaDeMetas!: MetasInterfaz[];
 
   constructor() {
